@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: "Zentry",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className="bg-gray-100 text-gray-800">{children}</body>
+      <body suppressHydrationWarning className="bg-gray-100 text-gray-800">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
