@@ -16,9 +16,7 @@ const socialLinks = [
 const Footer: React.FC = () => {
   return (
     <div className="relative w-screen flex flex-col bg-[rgb(82,66,253)] py-6 text-black">
-      <div className="relative container mx-auto flex flex-wrap items-start justify-between gap-10 px-6 py-16 text-sm z-10 md:flex-nowrap">
-
-        {/* Logo Section */}
+      <div className="relative container mx-auto flex flex-wrap items-start justify-between gap-5 lg:gap-10 px-2 lg:px-6 py-16 text-sm z-10 md:flex-nowrap">
         <div className="flex justify-center w-full md:w-auto">
           <Image
             src='/img/zentry.png'
@@ -31,7 +29,6 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-row gap-4 w-full lg:w-fit items-center justify-center px-2">
-          {/* Explore Section */}
           <div className="flex flex-col items-center gap-4 w-full md:w-auto">
             <h3 className="font-bold items-center uppercase tracking-wide text-[14px]">Explore</h3>
             <ul className="space-y-[2px] items-center">
@@ -49,8 +46,6 @@ const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
-
-          {/* Products Section */}
           <div className="flex flex-col items-center gap-4 w-full md:w-auto">
             <h3 className="font-bold items-center uppercase tracking-wide text-[14px]">Products</h3>
             <ul className="space-y-[2px] items-center">
@@ -69,11 +64,9 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-
-        {/* Social Links Section */}
-        <div className="flex flex-col px-4 items-center gap-x-2 gap-y-4 w-full md:w-auto">
+        <div className="flex flex-col px-0 lg:px-4 items-center gap-y-4 md:w-auto">
           <h3 className="font-bold uppercase tracking-wide text-[14px]">Follow Us</h3>
-          <ul className="flex gap-6">
+          <ul className="flex lg:gap-6 gap-1">
             {socialLinks.map((link, index) => (
               <li key={index}>
                 <CustomLink href={link.href} className="text-2xl">
@@ -84,7 +77,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Newsletter Signup Section */}
         <div className="flex flex-col items-center gap-3 w-full md:w-auto">
           <h3 className="font-bold uppercase tracking-wide text-md">Stay Updated</h3>
           <p className="text-gray-900 text-center text-sm">

@@ -131,7 +131,7 @@ const NavBar = () => {
                         </div>
                         <button
                             onClick={toggleAudioIndicator}
-                            className="ml-6 flex items-center justify-center space-x-2 transition-transform duration-100 hover:scale-105"
+                            className="lg:ml-6 flex items-center justify-center mr-6 lg:mr-0 space-x-2 transition-transform duration-100 hover:scale-105"
                         >
                             <audio
                                 ref={audioElementRef}
