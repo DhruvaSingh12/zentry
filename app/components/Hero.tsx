@@ -120,6 +120,12 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
             .to("#background-text", { ease: "power1.inOut" }, "<");
     }, []);
 
+    useEffect(() => {
+        if (loadedVideos === totalVideos) {
+            console.log("All videos loaded");
+        }
+    }, [loadedVideos]);
+
     const getVideoSrc = (index: number): string => `videos/hero-${index}.mp4`;
 
     return (
