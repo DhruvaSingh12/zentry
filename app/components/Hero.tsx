@@ -16,16 +16,15 @@ type HeroProps = {
 const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
     const [currentIndex, setCurrentIndex] = useState<number>(1);
     const [hasClicked, setHasClicked] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(true);
     const [loadedVideos, setLoadedVideos] = useState<number>(0);
 
     const totalVideos = 4;
 
     const texts = [
-        <span><b>Gaming</b></span>,
-        <span><b>Reality</b></span>,
-        <span><b>Identity</b></span>,
-        <span><b>Lifestyle</b></span>
+        <span key="gaming"><b>Gaming</b></span>,
+        <span key="reality"><b>Reality</b></span>,
+        <span key="identity"><b>Identity</b></span>,
+        <span key="lifestyle"><b>Lifestyle</b></span>
     ];
 
     const handleWatchTrailer = () => {
@@ -41,12 +40,6 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
     const handleVideoLoad = (): void => {
         setLoadedVideos((prev) => prev + 1);
     };
-
-    useEffect(() => {
-        if (loadedVideos === totalVideos - 1) {
-            setLoading(false);
-        }
-    }, [loadedVideos]);
 
     const handleMiniVdClick = (): void => {
         setHasClicked(true);
@@ -131,20 +124,15 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
 
     return (
         <div suppressHydrationWarning={true} className="h-dvh w-screen overflow-x-hidden">
-            <div
-                id="video-frame"
-                className="z-10 h-dvh w-screen overflow-hidden bg-blue-75"
-            >
+            <div id="video-frame" className="z-10 h-dvh w-screen overflow-hidden bg-blue-75">
                 <div className="absolute left-0 top-0 z-40 size-full">
                     <div className="mt-24 px-5 sm:px-10">
                         <div className="special-font hero-heading text-white transition-all duration-1000 transform">
                             <b>redefine</b>
                         </div>
-
                         <div className="mb-5 max-w-64 font-robert-regular transition-all duration-1000 transform text-blue-100">
                             Enter the Metagame <br /> Unleash the Play Economy
                         </div>
-
                         <Button
                             id="watch-trailer"
                             title="Watch Trailer"
@@ -153,12 +141,8 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
                             containerClass="bg-yellow-300 text-black"
                             className="custom-class text-[18px] font-bold"
                         />
-
                         {isVideoOpen && (
-                            <VideoPlayer
-                                videoSrc="/videos/trailer.mp4"
-                                onClose={handleCloseVideo}
-                            />
+                            <VideoPlayer videoSrc="/videos/trailer.mp4" onClose={handleCloseVideo} />
                         )}
                     </div>
                 </div>
