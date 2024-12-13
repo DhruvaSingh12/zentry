@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useEffect, useRef, useState } from "react";
 import VideoPlayer from "./VideoPlayer";
+import Button from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
     const totalVideos = 4;
 
     const texts = [
-        <span><b>Gaming</b></span>,  
+        <span><b>Gaming</b></span>,
         <span><b>Reality</b></span>,
         <span><b>Identity</b></span>,
         <span><b>Lifestyle</b></span>
@@ -32,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
     };
 
     const handleCloseVideo = () => {
-        toggleVideoPlayer(); 
+        toggleVideoPlayer();
     };
 
     const nextVdRef = useRef<HTMLVideoElement | null>(null);
@@ -144,13 +145,15 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
                             Enter the Metagame <br /> Unleash the Play Economy
                         </div>
 
-                        <button
+                        <Button
                             id="watch-trailer"
-                            title="Watch trailer"
+                            title="Watch Trailer"
                             onClick={handleWatchTrailer}
-                        >
-                            watch trailer
-                        </button>
+                            leftIcon={<span className="mr-2">⋙</span>}
+                            containerClass="bg-yellow-300 text-black"
+                            className="custom-class text-[18px] font-bold"
+                        />
+
                         {isVideoOpen && (
                             <VideoPlayer
                                 videoSrc="/videos/trailer.mp4"

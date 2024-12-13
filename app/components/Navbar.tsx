@@ -1,56 +1,77 @@
 "use client";
 
+import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import gsap from "gsap";
 import { useWindowScroll } from "react-use";
-import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
 
 const navItems: string[] = ["Nexus", "Vault", "Prologue", "About", "Contact"];
 
-
 const NavBar = () => {
     const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
     const [isIndicatorActive, setIsIndicatorActive] = useState<boolean>(false);
+    const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
+
     const audioElementRef = useRef<HTMLAudioElement | null>(null);
     const navContainerRef = useRef<HTMLDivElement | null>(null);
+    const lastScrollYRef = useRef<number>(0);
 
     const { y: currentScrollY } = useWindowScroll();
-    const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
-    const [lastScrollY, setLastScrollY] = useState<number>(0);
 
     const toggleAudioIndicator = (): void => {
-        setIsAudioPlaying((prev) => !prev);
-        setIsIndicatorActive((prev) => !prev);
+        if (audioElementRef.current) {
+            if (isAudioPlaying) {
+                audioElementRef.current.pause();
+                setIsAudioPlaying(false);
+                setIsIndicatorActive(false);
+            } else {
+                audioElementRef.current
+                    .play()
+                    .then(() => {
+                        setIsAudioPlaying(true);
+                        setIsIndicatorActive(true);
+                    })
+                    .catch((err) => {
+                        console.error("Audio playback failed:", err);
+                    });
+            }
+        }
     };
 
     useEffect(() => {
-        if (audioElementRef.current) {
-            if (isAudioPlaying) {
-                audioElementRef.current.play();
-            } else {
-                audioElementRef.current.pause();
-            }
+        const audioElement = audioElementRef.current;
+
+        if (audioElement) {
+            audioElement
+                .play()
+                .then(() => {
+                    setIsAudioPlaying(true);
+                    setIsIndicatorActive(true);
+                })
+                .catch(() => {
+                    console.log("Autoplay blocked; waiting for user interaction.");
+                });
         }
-    }, [isAudioPlaying]);
+    }, []);
 
     useEffect(() => {
         if (navContainerRef.current) {
             if (currentScrollY === 0) {
                 setIsNavVisible(true);
                 navContainerRef.current.classList.remove("floating-nav");
-            } else if (currentScrollY > lastScrollY) {
+            } else if (currentScrollY > lastScrollYRef.current) {
                 setIsNavVisible(false);
                 navContainerRef.current.classList.add("floating-nav");
-            } else if (currentScrollY < lastScrollY) {
+            } else if (currentScrollY < lastScrollYRef.current) {
                 setIsNavVisible(true);
                 navContainerRef.current.classList.add("floating-nav");
             }
         }
-        setLastScrollY(currentScrollY);
-    }, [currentScrollY, lastScrollY]);
+        lastScrollYRef.current = currentScrollY;
+    }, [currentScrollY]);
 
     useEffect(() => {
         if (navContainerRef.current) {
@@ -102,7 +123,7 @@ const NavBar = () => {
                                 <a
                                     key={index}
                                     href={`#${item.toLowerCase()}`}
-                                    className="nav-hover-btn"
+                                    className="nav-hover-btn font-bold"
                                 >
                                     {item}
                                 </a>
@@ -110,7 +131,7 @@ const NavBar = () => {
                         </div>
                         <button
                             onClick={toggleAudioIndicator}
-                            className="ml-10 flex items-center space-x-0.5"
+                            className="ml-6 flex items-center justify-center space-x-2 transition-transform duration-100 hover:scale-105"
                         >
                             <audio
                                 ref={audioElementRef}
@@ -118,15 +139,25 @@ const NavBar = () => {
                                 src="/audio/loop.mp3"
                                 loop
                             />
-                            {[1, 2, 3, 4].map((bar, index) => (
-                                <div
-                                    key={index}
-                                    className={clsx("indicator-line", {
-                                        active: isIndicatorActive,
-                                    })}
-                                />
-                            ))}
+                            <div className="flex space-x-[5px]">
+                                {[1, 2, 3, 4, 5].map((bar, index) => (
+                                    <div
+                                        key={index}
+                                        className={clsx(
+                                            "h-6 w-1 rounded bg-white transition-all",
+                                            {
+                                                "animate-bounce h-7": isIndicatorActive,
+                                                "opacity-50": !isIndicatorActive,
+                                            }
+                                        )}
+                                        style={{
+                                            animationDelay: `${index * 0.1}s`,
+                                        }}
+                                    />
+                                ))}
+                            </div>
                         </button>
+
                     </div>
                 </div>
             </div>
