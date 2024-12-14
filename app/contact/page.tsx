@@ -58,7 +58,7 @@ const Contact = () => {
               Partner Enquiries
             </h2>
             <p className="font-robert-medium mb-4">
-              Interested in partnering? Let's collaborate and create value
+              Interested in partnering? Let us collaborate and create value
               together.
             </p>
             <Link href="mailto:partner@zentry.com">

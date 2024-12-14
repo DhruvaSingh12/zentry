@@ -1,6 +1,6 @@
 "use client";
 
-import { FaDiscord, FaTwitter, FaYoutube, FaMedium, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaDiscord, FaTwitter, FaYoutube, FaMedium, FaLinkedin } from "react-icons/fa";
 import CustomLink from "./Link";
 import Image from "next/image";
 
