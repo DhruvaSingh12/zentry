@@ -8,7 +8,7 @@ import clsx from "clsx";
 gsap.registerPlugin(ScrollTrigger);
 
 type AnimatedTitleProps = {
-  title: string;
+  title: string | React.ReactElement;
   containerClass?: string;
 };
 
@@ -30,7 +30,7 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({ title, containerClass }) 
         ".animated-word",
         {
           opacity: 0,
-          transform: "translate3d(-200px, 200px, 100px) rotateY(-10deg) rotateX(0deg)", 
+          transform: "translate3d(-200px, 200px, 100px) rotateY(-10deg) rotateX(0deg)",
         },
         {
           opacity: 1,
@@ -44,25 +44,26 @@ const AnimatedTitle: React.FC<AnimatedTitleProps> = ({ title, containerClass }) 
     return () => ctx.revert();
   }, []);
 
-  return (
-    <div ref={containerRef} className={clsx("animated-title", containerClass)}>
-      {title.split("<br />").map((line, index) => (
-        <div
-          key={index}
-          className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3"
-        >
+  const renderTitle = () => {
+    if (typeof title === "string") {
+      return title.split("<br />").map((line, index) => (
+        <div key={index} className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3">
           {line.split(" ").map((word, idx) => (
-            <span
-              key={idx}
-              className="animated-word"
-              dangerouslySetInnerHTML={{ __html: word }}
-            />
+            <span key={idx} className="animated-word">
+              {word}
+            </span>
           ))}
         </div>
-      ))}
+      ));
+    }
+    return title;
+  };
+
+  return (
+    <div ref={containerRef} className={clsx("animated-title", containerClass)}>
+      {renderTitle()}
     </div>
   );
 };
 
 export default AnimatedTitle;
-

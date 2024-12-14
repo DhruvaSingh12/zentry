@@ -118,11 +118,11 @@ const NavBar = () => {
                         </div>
                     </div>
                     <div className="flex h-full items-center">
-                        <div className="hidden md:block">
+                        <div className="hidden lg:block">
                             {navItems.map((item, index) => (
                                 <a
                                     key={index}
-                                    href={`#${item.toLowerCase()}`}
+                                    href={`/${item.toLowerCase()}`}
                                     className="nav-hover-btn font-bold"
                                 >
                                     {item}

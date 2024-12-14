@@ -5,35 +5,34 @@ import CustomLink from "./Link";
 import Image from "next/image";
 
 const socialLinks = [
-  { href: "https://discord.com", icon: <FaDiscord /> },
-  { href: "https://twitter.com", icon: <FaTwitter /> },
-  { href: "https://youtube.com", icon: <FaYoutube /> },
-  { href: "https://medium.com", icon: <FaMedium /> },
-  { href: "https://linkedin.com", icon: <FaLinkedin /> },
-  { href: "https://instagram.com", icon: <FaInstagram /> },
+  { href: "https://discord.com/invite/zentry", icon: <FaDiscord /> },
+  { href: "https://x.com/zentry", icon: <FaTwitter /> },
+  { href: "https://www.youtube.com/@zentryhq", icon: <FaYoutube /> },
+  { href: "https://medium.com/zentry/", icon: <FaMedium /> },
+  { href: "https://www.linkedin.com/company/zentryhq/", icon: <FaLinkedin /> },
 ];
 
 const Footer: React.FC = () => {
   return (
     <div className="relative w-screen flex flex-col bg-[rgb(82,66,253)] py-6 text-black">
-      <div className="relative container mx-auto flex flex-wrap items-start justify-between gap-5 lg:gap-10 px-2 lg:px-6 py-16 text-sm z-10 md:flex-nowrap">
-        <div className="flex justify-center w-full md:w-auto">
+      <div className="relative container flex xl:flex-row flex-col items-center justify-between gap-y-10 gap-x-5 lg:gap-x-8 px-2 lg:px-20 py-12 text-sm">
+        <div className="w-[260px] items-center justify-center flex flex-row">
           <Image
             src='/img/zentry.png'
             alt="Zentry Logo"
-            width={200}
-            height={200}
+            width={500}
+            height={500}
             priority
-            className="w-auto h-auto"
+            className="w-[240px] transition-transform hover:scale-105 h-[200px] items-center"
           />
         </div>
 
-        <div className="flex flex-row gap-4 w-full lg:w-fit items-center justify-center px-2">
-          <div className="flex flex-col items-center gap-4 w-full md:w-auto">
-            <h3 className="font-bold items-center uppercase tracking-wide text-[14px]">Explore</h3>
-            <ul className="space-y-[2px] items-center">
+        <div className="flex flex-row lg:gap-10 w-full lg:w-fit items-center justify-between px-2">
+          <div className="flex flex-col items-center gap-4 w-full">
+            <h3 className="font-bold items-start uppercase tracking-wide text-[14px]">Explore</h3>
+            <ul className="space-y-[2px] items-center font-bold">
               <li>
-                <CustomLink href="#home">Home</CustomLink>
+                <CustomLink href="/">Home</CustomLink>
               </li>
               <li>
                 <CustomLink href="#prologue">Prologue</CustomLink>
@@ -46,9 +45,9 @@ const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div className="flex flex-col items-center gap-4 w-full md:w-auto">
+          <div className="flex flex-col items-center gap-4 w-full">
             <h3 className="font-bold items-center uppercase tracking-wide text-[14px]">Products</h3>
-            <ul className="space-y-[2px] items-center">
+            <ul className="space-y-[2px] items-center font-bold">
               <li>
                 <CustomLink href="#radiant">Radiant</CustomLink>
               </li>
@@ -64,34 +63,17 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col px-0 lg:px-4 items-center gap-y-4 md:w-auto">
+        <div className="flex flex-col items-center gap-y-4">
           <h3 className="font-bold uppercase tracking-wide text-[14px]">Follow Us</h3>
           <ul className="flex lg:gap-6 gap-1">
             {socialLinks.map((link, index) => (
               <li key={index}>
-                <CustomLink href={link.href} className="text-2xl">
+                <CustomLink href={link.href} className="text-4xl">
                   {link.icon}
                 </CustomLink>
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className="flex flex-col items-center gap-3 w-full md:w-auto">
-          <h3 className="font-bold uppercase tracking-wide text-md">Stay Updated</h3>
-          <p className="text-gray-900 text-center text-sm">
-            Subscribe to our newsletter to receive the latest updates and exclusive offers.
-          </p>
-          <form className="flex items-center gap-2">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full max-w-xs rounded-md bg-gray-300 px-4 py-2 placeholder-gray-800 focus:outline-none"
-            />
-            <button className="rounded-md bg-black text-white px-4 py-2 transition-transform hover:scale-105">
-              Subscribe
-            </button>
-          </form>
         </div>
       </div>
 

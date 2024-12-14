@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Hero from "./components/Hero";
-import Footer from "./components/Footer";
-import NavBar from "./components/Navbar";
-import About from "./components/About";
-import Features from "./components/Features";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+import About from "../components/About";
+import Features from "../components/Features";
 
 const Page = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -16,7 +15,6 @@ const Page = () => {
 
   return (
     <main className={`${isVideoOpen ? "overflow-hidden" : "bg-blue-50"} h-screen w-full`}>
-      <NavBar />
       <Hero isVideoOpen={isVideoOpen} toggleVideoPlayer={toggleVideoPlayer} />
       <About/>
       <Features />

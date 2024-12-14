@@ -31,8 +31,8 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <div id="about" className="min-h-screen bg-blue-50 w-screen">
-      <div className="relative mb-8 bg-blue-50 flex flex-col items-center gap-5">
+    <div className="min-h-screen bg-blue-50 w-screen">
+      <div className="relative mb-8 flex flex-col items-center gap-5">
         <p className="font-general text-sm font-bold uppercase mt-36  md:text-[20px]">
           Welcome to Zentry
         </p>
@@ -56,7 +56,7 @@ const About: React.FC = () => {
           <img
             src="img/about.webp"
             alt="Background"
-            className="absolute left-0 top-0 size-full object-cover"
+            className="absolute size-full object-cover"
           />
         </div>
       </div>
