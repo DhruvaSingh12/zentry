@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import PrologueHero from './components/PrologueHero';
+import Footer from '@/components/Footer';
 
 const ProloguePage: React.FC = () => {
 
@@ -14,6 +15,7 @@ const ProloguePage: React.FC = () => {
     return (
         <div className={`${isVideoOpen ? "overflow-hidden" : "bg-blue-50"} h-screen w-full`}>
             <PrologueHero isVideoOpen={isVideoOpen} toggleVideoPlayer={toggleVideoPlayer} />
+            <Footer/>
         </div>
     );
 };

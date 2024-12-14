@@ -71,7 +71,7 @@ const PrologueHero: React.FC<PrologueHeroProps> = ({ isVideoOpen, toggleVideoPla
                         className="custom-class text-[18px] !font-bold"
                     />
                     {isVideoOpen && (
-                        <VideoPlayer videoSrc="/videos/contact.mp4" onClose={handleCloseVideo} />
+                        <VideoPlayer videoSrc="/videos/prologue.mp4" onClose={handleCloseVideo} />
                     )}
                 </div>
                 <div className="contact-heading-image-wrapper absolute inset-0 overflow-hidden z-0">
