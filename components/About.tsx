@@ -8,20 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About: React.FC = () => {
   useEffect(() => {
-    const opacityAnimation = gsap.fromTo(
-      ".about-image img",
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 1.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "#clip",
-          start: "top center",
-          toggleActions: "play none none none",
-        },
-      }
-    );
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: "#clip",
