@@ -191,7 +191,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
                         onLoadedData={handleVideoLoad}
                     />
                 </div>
-                <div className="absolute bottom-5 right-5 z-50 flex items-center justify-end">
+                <div className="absolute bottom-5 right-5 flex items-center justify-end">
                     <div
                         id="foreground-text"
                         className="special-font hero-heading text-white transition-all duration-1000 transform"
@@ -200,7 +200,7 @@ const Hero: React.FC<HeroProps> = ({ isVideoOpen, toggleVideoPlayer }) => {
                     </div>
                 </div>
             </div>
-            <div className={`absolute bottom-5 right-5 flex z-0 items-center justify-end ${isVideoOpen ? "pointer-events-none opacity-0" : "opacity-100"
+            <div className={`absolute bottom-5 right-5 flex items-center justify-end ${isVideoOpen ? "pointer-events-none opacity-0" : "opacity-100"
                 }`}>
                 <div
                     id="background-text"
