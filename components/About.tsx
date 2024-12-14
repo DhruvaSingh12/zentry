@@ -8,6 +8,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About: React.FC = () => {
   useEffect(() => {
+    const opacityAnimation = gsap.fromTo(
+      ".about-image img",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#clip",
+          start: "top center",
+          toggleActions: "play none none none",
+        },
+      }
+    );
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: "#clip",
@@ -24,7 +38,6 @@ const About: React.FC = () => {
       height: "100vh",
       borderRadius: 0,
     });
-
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -43,7 +56,9 @@ const About: React.FC = () => {
         />
 
         <div className="about-subtext">
-          <p className="text-black font-bold">The Game of Games begins—your life, now an epic MMORPG</p>
+          <p className="text-black font-bold">
+            The Game of Games begins—your life, now an epic MMORPG
+          </p>
           <p className="text-gray-600">
             Zentry unites every player from countless games and platforms, both
             digital and physical, into a unified Play Economy

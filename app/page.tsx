@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import About from "../components/About";
 import Features from "../components/Features";
+import FloatingImage from "@/components/FloatingImage";
 
 const Page = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -18,6 +19,7 @@ const Page = () => {
       <Hero isVideoOpen={isVideoOpen} toggleVideoPlayer={toggleVideoPlayer} />
       <About/>
       <Features />
+      <FloatingImage/>
       <Footer />
     </main>
   );
