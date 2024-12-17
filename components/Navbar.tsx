@@ -8,7 +8,7 @@ import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
 
-const navItems: string[] = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems: string[] = ["Prologue", "About", "Contact"];
 
 const NavBar = () => {
     const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
@@ -86,7 +86,7 @@ const NavBar = () => {
     return (
         <div
             ref={navContainerRef}
-            className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+            className="fixed inset-x-0 top-2 lg:top-3 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
         >
             <div className="absolute top-1/2 w-full -translate-y-1/2">
                 <div className="flex size-full items-center justify-between p-4">
@@ -118,15 +118,32 @@ const NavBar = () => {
                         </div>
                     </div>
                     <div className="flex h-full items-center">
-                        <div className="hidden lg:block">
+                        <div className="hidden lg:flex items-center gap-6">
+                            <a
+                                href="https://nexus.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="nav-hover-btn font-bold"
+                            >
+                                Nexus
+                            </a>
+                            <a
+                                href="https://vault.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="nav-hover-btn font-bold"
+                            >
+                                Vault
+                            </a>
+                            {/* Internal Navigation Items */}
                             {navItems.map((item, index) => (
-                                <a
+                                <Link
                                     key={index}
                                     href={`/${item.toLowerCase()}`}
                                     className="nav-hover-btn font-bold"
                                 >
                                     {item}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                         <button
@@ -157,7 +174,6 @@ const NavBar = () => {
                                 ))}
                             </div>
                         </button>
-
                     </div>
                 </div>
             </div>

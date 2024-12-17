@@ -16,8 +16,8 @@ const Main = () => {
         <div className="grid grid-cols-1 lg:w-[55%] md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-5">
           <div className="hover:bg-black hover:skew-y-4 hover:-skew-x-2 transition-transform duration-500 hover:scale-105 text-left w-[300px] 2xl:w-[350px] hover:text-blue-50 rounded-[16px] p-6">
             <p className="font-robert-regular text-end">001</p>
-            <h2 className="font-zentry text-6xl font-bold mb-4">
-              General Enquiries
+            <h2 className="font-zentry special-font text-6xl font-bold mb-4">
+              Gen<b>er</b>al En<b>qu</b>iries
             </h2>
             <p className="font-robert-medium mb-4">
               Got questions? Reach out to us for any information you need!
@@ -32,7 +32,7 @@ const Main = () => {
           </div>
           <div className="hover:bg-black hover:skew-y-4 hover:skew-x-2 transition-transform duration-500 hover:scale-105 text-left w-[300px] 2xl:w-[350px] hover:text-blue-50 rounded-[16px] p-6">
             <p className="font-robert-regular text-end">002</p>
-            <h2 className="font-zentry text-6xl font-bold mb-4">Careers</h2>
+            <h2 className="font-zentry special-font text-6xl font-bold mb-4"><b>Care</b>ers</h2>
             <p className="font-robert-medium mb-4">
               Join our team! Explore career opportunities and grow with us.
             </p>
@@ -46,8 +46,8 @@ const Main = () => {
           </div>
           <div className="hover:bg-black hover:skew-y-4 hover:-skew-x-2 transition-transform duration-500 hover:scale-105 text-left w-[300px] 2xl:w-[350px] hover:text-blue-50 rounded-[16px] p-6">
             <p className="font-robert-regular text-end">003</p>
-            <h2 className="font-zentry text-6xl font-bold mb-4">
-              Partner Enquiries
+            <h2 className="font-zentry special-font text-6xl font-bold mb-4">
+              <b>Pa</b>rtner <b>Enq</b>uiries
             </h2>
             <p className="font-robert-medium mb-4">
               Interested in partnering? Let&apos;s collaborate and create value
@@ -63,8 +63,8 @@ const Main = () => {
           </div>
           <div className="hover:bg-black hover:skew-y-4 hover:skew-x-2 transition-transform duration-500 hover:scale-105 text-left w-[300px] 2xl:w-[350px] hover:text-blue-50 rounded-[16px] p-6">
             <p className="font-robert-regular text-end">004</p>
-            <h2 className="font-zentry text-6xl font-bold mb-4">
-              Press Enquiries
+            <h2 className="font-zentry special-font text-6xl font-bold mb-4">
+              P<b>res</b>s <b>enqui</b>ries
             </h2>
             <p className="font-robert-medium mb-4">
               For all press needs, contact us for information and resources.

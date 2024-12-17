@@ -30,7 +30,13 @@ export default {
         'circular-web': ['circular-web', 'sans-serif'],
         'robert-medium': ['robert-medium', 'sans-serif'],
         'robert-regular': ['robert-regular', 'sans-serif'],
-      }
+      },
+      animation: {
+        "spin-slow": "spin 8s linear infinite",
+        "spin-medium": "spin 3s linear infinite",
+        "spin-medium-reverse": "spin 4s linear infinite reverse",
+
+      },
     },
   },
   plugins: [],

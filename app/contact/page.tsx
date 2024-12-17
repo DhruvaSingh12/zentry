@@ -48,7 +48,7 @@ const Contact = () => {
           <video
             ref={videoRef}
             src="/videos/contact.mp4"
-            className="contact-heading-video rounded-[30px] h-screen absolute top-1/2 left-1/2 w-[150vw] lg:w-[100vw] object-cover pointer-events-none"
+            className="rounded-[30px] h-screen absolute top-1/2 left-1/2 w-[150vw] lg:w-[100vw] object-cover pointer-events-none"
             autoPlay
             loop
             muted

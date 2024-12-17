@@ -1,12 +1,18 @@
-import gsap from "gsap";
-import { useRef, MouseEvent } from "react";
+"use client";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef, useEffect, MouseEvent } from "react";
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
 import Link from "next/link";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const FloatingImage: React.FC = () => {
   const frameRef = useRef<HTMLImageElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseMove = (e: MouseEvent<HTMLImageElement>) => {
     const { clientX, clientY } = e;
@@ -46,14 +52,67 @@ const FloatingImage: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const imageAnimation = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "center center",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      imageAnimation.fromTo(
+        frameRef.current,
+        {
+          opacity: 0,
+          transform: "translate3d(0, 200px, 0) scale(0.8)",
+        },
+        {
+          opacity: 1,
+          transform: "translate3d(0, 0, 0) scale(1)",
+          ease: "power2.inOut",
+          duration: 1.5,
+        }
+      );
+
+      gsap.to(containerRef.current, {
+        backgroundColor: "rgba(234,255,108,255)", 
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "95% bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
+
+      gsap.to(textRef.current, {
+        color: "#000000", 
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "95% bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
-      <div className="flex size-full flex-col items-center py-10 pb-24">
+    <div
+      id="story"
+      className="min-h-dvh w-screen bg-black text-blue-50 transition-colors duration-500"
+      ref={containerRef}
+    >
+      <div className="flex size-full flex-col items-center py-8 pb-24">
         <p className="font-general text-sm uppercase md:text-[10px]">
           the open ip universe
         </p>
 
-        <div className="relative size-full mb-10">
+        <div className="relative size-full lg:mb-2 mb-10">
           <AnimatedTitle
             title="the story of <br /> a hidden realm"
             containerClass="mt-5 pointer-events-none !text-blue-50 mix-blend-difference relative z-10"
@@ -74,37 +133,14 @@ const FloatingImage: React.FC = () => {
                 />
               </div>
             </div>
-            <svg
-              className="invisible absolute size-0"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <filter id="flt_tag">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="8"
-                    result="blur"
-                  />
-                  <feColorMatrix
-                    in="blur"
-                    mode="matrix"
-                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                    result="flt_tag"
-                  />
-                  <feComposite
-                    in="SourceGraphic"
-                    in2="flt_tag"
-                    operator="atop"
-                  />
-                </filter>
-              </defs>
-            </svg>
           </div>
         </div>
 
-        <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
+        <div
+          className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end transition-colors duration-500"
+        >
           <div className="flex h-full w-fit flex-col items-center md:items-start">
-            <p className="mt-3 max-w-sm text-center font-circular-web text-blue-50 md:text-start">
+            <p ref={textRef} className="max-w-sm text-center font-circular-web text-blue-50 md:text-start">
               Where realms converge, lies Zentry and the boundless pillar.
               Discover its secrets and shape your fate amidst infinite
               opportunities.

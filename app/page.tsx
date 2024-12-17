@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import About from "../components/About";
 import Features from "../components/Features";
 import FloatingImage from "@/components/FloatingImage";
+import Universe from "@/components/Universe";
+import Glance from "@/components/Glance";
 
 const Page = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -20,6 +22,8 @@ const Page = () => {
       <About/>
       <Features />
       <FloatingImage/>
+      <Universe/>
+      <Glance/>
       <Footer />
     </main>
   );
