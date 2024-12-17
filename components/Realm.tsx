@@ -9,7 +9,7 @@ import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FloatingImage: React.FC = () => {
+const Realm: React.FC = () => {
   const frameRef = useRef<HTMLImageElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -81,7 +81,7 @@ const FloatingImage: React.FC = () => {
         backgroundColor: "rgba(234,255,108,255)", 
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "95% bottom",
+          start: "90% bottom",
           end: "bottom bottom",
           scrub: true,
         },
@@ -91,7 +91,7 @@ const FloatingImage: React.FC = () => {
         color: "#000000", 
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "95% bottom",
+          start: "90% bottom",
           end: "bottom bottom",
           scrub: true,
         },
@@ -104,10 +104,10 @@ const FloatingImage: React.FC = () => {
   return (
     <div
       id="story"
-      className="min-h-dvh w-screen bg-black text-blue-50 transition-colors duration-500"
+      className="h-[180vh] w-screen bg-black text-blue-50 transition-colors duration-500"
       ref={containerRef}
     >
-      <div className="flex size-full flex-col items-center py-8 pb-24">
+      <div className="flex flex-col items-center py-8 pb-24">
         <p className="font-general text-sm uppercase md:text-[10px]">
           the open ip universe
         </p>
@@ -156,8 +156,9 @@ const FloatingImage: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className="w-full h-[50vh]" />/
     </div>
   );
 };
 
-export default FloatingImage;
+export default Realm;

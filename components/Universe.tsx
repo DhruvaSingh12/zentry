@@ -1,11 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "./Button";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Universe: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
 
     const slides = [
         {
@@ -49,7 +55,7 @@ const Universe: React.FC = () => {
                     <div className="bg-black absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border-4 border-black rotate-45" />
                 </div>
             ),
-        },
+        }
     ];
 
     const handleNext = () => {
@@ -62,10 +68,38 @@ const Universe: React.FC = () => {
         );
     };
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.to(containerRef.current, {
+                backgroundColor: "rgb(223,223,240)",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "bottom 90%",
+                    end: "bottom bottom",
+                    scrub: true,
+                },
+            });
+
+            gsap.to(textRef.current, {
+                color: "#000000",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "bottom 90%",
+                    end: "bottom bottom",
+                    scrub: true,
+                },
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <div className="bg-yellow-300 h-[90vh] lg:h-[110vh] w-screen flex flex-col p-5 lg:p-10 text-black relative">
-            {/* Hero Section */}
-            <div className="flex flex-col items-start gap-3 pb-5">
+        <div
+            ref={containerRef}
+            className="bg-yellow-300 h-[160vh] w-screen transition-colors duration-500 flex flex-col gap-y-4 p-5 lg:p-10 text-black relative"
+        >
+            <div ref={textRef} className="flex flex-col items-start gap-3 pb-5">
                 <div className="hero-heading special-font">
                     THE <b>UN</b>IVERSE <br /> P<b>OWE</b>RED BY Z<b>EN</b>T
                 </div>
@@ -88,8 +122,10 @@ const Universe: React.FC = () => {
                         }`}
                     >
                         <div className="flex flex-row h-full w-full items-center justify-center">
-                            {/* Text Section */}
-                            <div className="w-1/2 lg:p-10 p-5 flex flex-col lg:flex-row items-start gap-y-3 lg:gap-x-6">
+                            <div
+                                onClick={handlePrevious}
+                                className="w-1/2 cursor-pointer rounded-3xl hover:bg-black/10 lg:p-10 p-5 flex flex-col lg:flex-row items-start gap-y-3 lg:gap-x-6"
+                            >
                                 <h2 className="font-robert-medium mt-2">
                                     {`0${slide.id}`}
                                 </h2>
@@ -103,20 +139,17 @@ const Universe: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div className="w-1/2 flex items-center justify-center">
+                            <div
+                                onClick={handleNext}
+                                className="w-1/2 rounded-3xl flex cursor-pointer hover:bg-black/10 items-center justify-center"
+                            >
                                 {slide.image}
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
-
-            <div
-                className="absolute bottom-10 lg:bottom-8 hover:bg-black/10 rounded-3xl left-4 lg:left-8 lg:h-[30%] h-1/2 w-1/2 cursor-pointer flex items-center justify-start z-10"
-                onClick={handlePrevious}/>
-            <div
-                className="absolute bottom-10 lg:bottom-8 hover:bg-black/10 rounded-3xl right-4 lg:right-8 lg:h-[30%] h-1/2 w-1/2 cursor-pointer flex items-center justify-end z-10"
-                onClick={handleNext}/>
+            <div className="w-full h-[40vh]" />
         </div>
     );
 };

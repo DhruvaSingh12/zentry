@@ -5,9 +5,12 @@ import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import About from "../components/About";
 import Features from "../components/Features";
-import FloatingImage from "@/components/FloatingImage";
 import Universe from "@/components/Universe";
 import Glance from "@/components/Glance";
+import Realm from "@/components/Realm";
+import Discover from "@/components/Discover";
+import Updates from "@/components/Updates";
+import Contact from "@/components/Contact";
 
 const Page = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -21,9 +24,12 @@ const Page = () => {
       <Hero isVideoOpen={isVideoOpen} toggleVideoPlayer={toggleVideoPlayer} />
       <About/>
       <Features />
-      <FloatingImage/>
+      <Realm/>
       <Universe/>
+      <Discover/>
       <Glance/>
+      <Updates/>
+      <Contact/>
       <Footer />
     </main>
   );
