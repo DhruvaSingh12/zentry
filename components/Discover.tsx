@@ -82,7 +82,7 @@ const Discover = () => {
                 />
 
                 <p ref={textRef} className="text-center mt-8 text-black font-robert-medium text-lg">
-                    Zentry is on a mission to unite diverse player networks to <br /> forge the world's largest shared adventure.
+                    Zentry is on a mission to unite diverse player networks to <br /> forge the world&apos;s largest shared adventure.
                 </p>
 
                 <div className="items-center flex flex-col justify-center mt-5">
