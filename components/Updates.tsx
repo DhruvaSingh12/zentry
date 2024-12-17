@@ -19,7 +19,7 @@ const Updates = () => {
                         containerClass="!text-black" />
                     <div className="w-[300px] lg:w-[500px] mt-4 lg:mt-8">
                         <p className="text-black font-robert-medium text-lg text-start">
-                            Stay updated with the latest news, events, and updates in our ecosystem. Be part of our universe's growth and evolution.
+                            Stay updated with the latest news, events, and updates in our ecosystem. Be part of our universe&apos;s growth and evolution.
                         </p>
                     </div>
                     <Link href="https://medium.com/zentry">
