@@ -6,6 +6,7 @@ import { useRef, useEffect, MouseEvent } from "react";
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
 import Link from "next/link";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,8 +122,10 @@ const Realm: React.FC = () => {
           <div className="story-img-container">
             <div className="story-img-mask">
               <div className="story-img-content">
-                <img
+                <Image
                   ref={frameRef}
+                  height={1080}
+                  width={1920}
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
                   onMouseUp={handleMouseLeave}

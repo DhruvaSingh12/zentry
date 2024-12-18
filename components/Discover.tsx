@@ -12,9 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Discover = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    const titleRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.to(containerRef.current, {

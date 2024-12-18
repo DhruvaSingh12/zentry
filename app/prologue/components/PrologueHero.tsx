@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Button from "@/components/Button";
 import VideoPlayer from "@/components/VideoPlayer";
+import Image from "next/image";
 
 type PrologueHeroProps = {
     isVideoOpen: boolean;
@@ -75,8 +76,10 @@ const PrologueHero: React.FC<PrologueHeroProps> = ({ isVideoOpen, toggleVideoPla
                     )}
                 </div>
                 <div className="contact-heading-image-wrapper absolute inset-0 overflow-hidden z-0">
-                    <img
+                    <Image
                         ref={imageRef}
+                        height={1080}
+                        width={1920}
                         src="/img/entrance.webp"
                         alt="Hero Image"
                         className="contact-heading-image rounded-[30px] h-screen absolute top-1/2 left-1/2 w-[150vw] lg:w-[100vw] object-cover pointer-events-none"

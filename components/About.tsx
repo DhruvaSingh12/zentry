@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/all";
-
 import AnimatedTitle from "./AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
