@@ -120,7 +120,7 @@ const NavBar = () => {
                     <div className="flex h-full items-center">
                         <div className="hidden lg:flex items-center gap-6">
                             <a
-                                href="https://nexus.com"
+                                href="https://nexus.zentry.com/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="nav-hover-btn font-bold"
@@ -128,14 +128,13 @@ const NavBar = () => {
                                 Nexus
                             </a>
                             <a
-                                href="https://vault.com"
+                                href="https://vault.zentry.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="nav-hover-btn font-bold"
                             >
                                 Vault
                             </a>
-                            {/* Internal Navigation Items */}
                             {navItems.map((item, index) => (
                                 <Link
                                     key={index}

@@ -36,27 +36,6 @@ const Discover = () => {
                     scrub: true,
                 },
             });
-
-            gsap.to(buttonRef.current, {
-                backgroundColor: "rgb(223,223,240)",
-                color: "rgb(223,223,240)",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 90%",
-                    end: "bottom bottom",
-                    scrub: true,
-                },
-            });
-
-            gsap.to(titleRef.current, {
-                color: "rgb(223,223,240)",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "90% bottom",
-                    end: "bottom bottom",
-                    scrub: true,
-                },
-            });
         });
 
         return () => ctx.revert();
@@ -75,7 +54,6 @@ const Discover = () => {
             </div>
             <div className="h-[110vh] items-center w-full">
                 <AnimatedTitle
-                    ref={titleRef}
                     title="We're building <br /> a new ▢ reality <br /> that rewards <br /> 
                 players ▢ and <br /> encourages <br /> communities <br /> to ▢ thrive"
                     containerClass="!text-black"
@@ -90,7 +68,6 @@ const Discover = () => {
                         <Button
                             id="about"
                             title="discover who we are"
-                            ref={buttonRef}
                             containerClass="font-bold border border-3 border-blue-50 !bg-black text-blue-50 transition-colors duration-500"
                         />
                     </Link>

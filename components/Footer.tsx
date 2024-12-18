@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
             width={500}
             height={500}
             priority
-            className="w-[240px] transition-transform hover:scale-105 h-[200px] items-center"
+            className="w-[240px] transition-transform duration-500 hover:scale-110 h-[200px] items-center"
           />
         </div>
 

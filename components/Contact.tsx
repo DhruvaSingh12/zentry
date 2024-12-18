@@ -1,5 +1,7 @@
+import Image from "next/image";
 import AnimatedTitle from "./AnimatedTitle";
 import Button from "./Button";
+import Link from "next/link";
 
 type ImageClipBoxProps = {
   src: string;
@@ -8,7 +10,7 @@ type ImageClipBoxProps = {
 
 const ImageClipBox: React.FC<ImageClipBoxProps> = ({ src, clipClass }) => (
   <div className={clipClass}>
-    <img src={src} alt="Contact Image" />
+    <Image src={src} width={400} height={400} alt="Contact Image" />
   </div>
 );
 
@@ -42,7 +44,10 @@ const Contact: React.FC = () => {
             title="let&#39;s build the <br /> new era of gaming <br /> together."
             className="!text-blue-50"
           />
-          <Button title="contact us" containerClass="mt-10 cursor-pointer" />
+          <p className="font-general text-[10px] lg:hidden mt-10 uppercase">Join Zentry</p>
+          <Link href="/contact">
+          <Button title="contact us" containerClass="mt-10 !bg-blue-50 !font-bold" />
+          </Link>
         </div>
       </div>
     </div>
